@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from .models import ApiResponse
 from .serializers import ApiResponseSerializer
+from django.http import HttpResponseBadRequest
 import datetime
 
 
@@ -18,5 +19,7 @@ class APIResponseView(generics.RetrieveAPIView):
             current_day = datetime.datetime.now().strftime('%A'),
             utc_time = utc_time,
             track = 'Backend',
+            github_file_url = 'https://github.com/Aladaabdul/ApiResponse/blob/main/Api/Apiproject/apiapp/views.py',
+            github_repo_url = 'https://github.com/Aladaabdul/ApiResponse.git'
         )
         return api_response
