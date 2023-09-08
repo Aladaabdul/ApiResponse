@@ -3,7 +3,7 @@ from rest_framework import generics
 from .models import ApiResponse
 from .serializers import ApiResponseSerializer
 from django.http import HttpResponseBadRequest
-import datetime
+from datetime import datetime
 
 
 # Create your views here.
@@ -18,12 +18,12 @@ class APIResponseView(generics.RetrieveAPIView):
        if not slack_name or not track:
            return HttpResponseBadRequest("Both 'slack_name' and 'track' parameters are required.")
        
-       utc_time = datetime.datetime.utcnow()
+       utc_time = datetime.utcnow().isoformat() + 'Z'
        api_response = ApiResponse (
             slack_name = 'Yakub Abdulrahman Alada',
-            current_day = datetime.datetime.now().strftime('%A'),
+            current_day = datetime.now().strftime('%A'),
             utc_time = utc_time,
-            track = 'Backend',
+            track = 'backend',
             github_file_url = 'https://github.com/Aladaabdul/ApiResponse/blob/main/Api/Apiproject/apiapp/views.py',
             github_repo_url = 'https://github.com/Aladaabdul/ApiResponse.git'
         )
